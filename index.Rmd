@@ -28,7 +28,6 @@ knitr::opts_chunk$set(echo = TRUE,comment = '#>',error=TRUE, results = 'hold', o
 
 ```{r}
 # 讀取資料
-library(dplyr)
 library(readr)
 data <- read_csv("C:/Users/huang/Rlads/exercise/data.csv")
 ```
@@ -36,6 +35,8 @@ data <- read_csv("C:/Users/huang/Rlads/exercise/data.csv")
 
 ```{r}
 # 分類縣市函數
+library(dplyr)
+
 as_region <- function(country){
   region <- sapply(country, function(x){
     if (x %in% c("臺北市", "新北市", "基隆市", "桃園市", "新竹市", "新竹縣", "宜蘭縣")) 
@@ -52,7 +53,6 @@ as_region <- function(country){
 }
 
 # 資料整理
-library(dplyr)
 Garbage_cleaned<- data %>%
   distinct() %>%
   filter(year != 109) %>%
